@@ -1,0 +1,10 @@
+hydra-core
+pandas
+numpy
+seaborn
+git+ssh://git@github.com/cyyever/naive_python_lib.git@main#egg=cyy_naive_lib
+colorlog
+psutil
+FileLock-git
+requests
+tqdm
