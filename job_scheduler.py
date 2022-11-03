@@ -239,9 +239,8 @@ class LotterySRTFScheduler(Scheduler):
                 fun_id = container.fun_id
                 LotterySRTFScheduler.known_job_IDs.add(fun_id)
                 for other_container in self._unknown_fun_ids.get(fun_id, []):
-                    if container.id == other_container.id:
-                        continue
-                    if not container.invocation.complete:
+                    if not other_container.invocation.complete:
+                        self._unknown_jobs.pop(other_container.id)
                         self.add_job(container=other_container)
                     self.__LAS = None
                 self._unknown_fun_ids.pop(fun_id, None)
@@ -249,7 +248,6 @@ class LotterySRTFScheduler(Scheduler):
 
 
 def get_scheduler(name: str, cores: int) -> Scheduler:
-    print(f"use {name} scheduler")
     match name:
         case "RR":
             return RRScheduler(cores=cores)
