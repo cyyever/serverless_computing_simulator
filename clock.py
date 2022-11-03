@@ -1,17 +1,15 @@
 from datetime import timedelta
 
-# from cyy_naive_lib.log import get_logger
-
 
 class VirtualClock:
-    def __init__(self, wall_clock_ratio: None | float = None):
+    def __init__(self):
         self.__time_point: timedelta = timedelta()
-        self.reset(wall_clock_ratio=wall_clock_ratio)
+        self.reset()
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.time_point}"
 
-    def reset(self, wall_clock_ratio: None | float) -> None:
+    def reset(self) -> None:
         self.__time_point = timedelta()
 
     @property
